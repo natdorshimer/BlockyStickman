@@ -4,24 +4,41 @@
 #include "Entity.h"
 #include "entt/entt.hpp"
 #include "SFML/Graphics/View.hpp"
+#include "State.h"
+#include "Renderer.h"
 
 
-void Blocky::MenuSystems::SelectionReportSystem(Timestep dt, entt::registry& registry)
+void Blocky::MenuSystems::SelectionReportSystem(Timestep dt, entt::registry& registry, State* state)
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		sf::Vector2i mousePos = sf::Mouse::getPosition();
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+	{
+
+		LOG("MOUSE PRESSED\n");
+		sf::Vector2i mousePixels = sf::Mouse::getPosition(*Renderer::GetRenderer());
+		sf::Vector2f mousePos = Renderer::GetRenderer()->mapPixelToCoords(mousePixels);
+		LOG("Mouse: {} {}\n", mousePos.x, mousePos.y);
+
 		auto textBoxes = registry.view<TextComponentPtr, FontComponentPtr>();
-		// TODO find position of each text box, and see if the position of any intersects/contains the current mouse position. 
-		for (auto entity : textBoxes) {
-			// If so, do a check to see the text of that text box and do the according action
+		for (auto entity : textBoxes)
+		{
+			// find position of each text box, check for any intersects with the current mouse position
 			auto& textBox = registry.get<TextComponentPtr>(entity)->text;
+			LOG("Box: {} {}\n", textBox.getPosition().x, textBox.getPosition().y);
+
+			// If so, do a check to see the text of that text box and do the according action
 			if (textBox.getGlobalBounds().contains(sf::Vector2f(mousePos)))
 			{
-				if (textBox.getString() == "Start") {
+				if (textBox.getString() == std::string("Start"))
+				{
 					// start game
+					LOG("Starting Game!");
+					state->requestSwap(States::Game);
 				}
-				else if (textBox.getString() == "Exit") {
+				else if (textBox.getString() == std::string("Exit"))
+				{
 					// exit game
+					LOG("Exiting Game");
+					state->requestStackPop();
 				}
 			}
 		}

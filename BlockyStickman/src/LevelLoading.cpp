@@ -153,7 +153,8 @@ namespace Blocky {
 		GiveComponent(text, TopLayer);
 
 		// get font from file and set it
-		if (!textFontComponent->font.loadFromFile(filepath)) {
+		if (!textFontComponent->font.loadFromFile(filepath)) 
+		{
 			LOG("Error: Could not load font from {}", filepath);
 		}
 		textTextComponent->text.setFont(textFontComponent->font);
@@ -168,12 +169,14 @@ namespace Blocky {
 		textTextComponent->text.setFillColor(color);
 
 		// text style
-		if (style != sf::Text::Style::Regular) {
+		if (style != sf::Text::Style::Regular) 
+		{
 			textTextComponent->text.setStyle(style);
 		}
 
 		// char size, in pixels
-		if (characterSize != 30) {
+		if (characterSize != 30) 
+		{
 			textTextComponent->text.setCharacterSize(characterSize);
 		}
 
@@ -192,17 +195,23 @@ namespace Blocky {
 
 		// Find the newly added sprite in the registry and give it a camera
 		auto spritesView = scene->GetRegistry().view<SpriteComponentPtr>();
-		for (auto spriteEntity : spritesView) {
-			if (spriteEntity == bg.GetID()) {
+		for (auto spriteEntity : spritesView) 
+		{
+			if (spriteEntity == bg.GetID()) 
+			{
 				auto& bgSprite = spritesView.get<SpriteComponentPtr>(spriteEntity)->sprite;
-				// set camera to center on the background image
+
+				//Get background image width and height
 				auto h = bgSprite.getGlobalBounds().height;
 				auto w = bgSprite.getGlobalBounds().width;
+
+				// set camera to center on the background image
 				bgCameraComponent->view.setCenter(w/2, h/2);
 				bgCameraComponent->view.setSize(w, h);
 				break;
 			}
 		}
+
 		return bg;
 	}
 
