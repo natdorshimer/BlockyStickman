@@ -20,7 +20,7 @@ project "BlockyStickman"
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
     pchheader "blocky-pch.h"
-    pchsource "blocky-pch.cpp"
+    pchsource "%{prj.name}/src/Engine/blocky-pch.cpp"
 
 
     files
