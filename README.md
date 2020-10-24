@@ -1,6 +1,3 @@
-# here-be-dragons-final-project-natalielucas
-here-be-dragons-final-project-natalielucas created by GitHub Classroom
-
 ## Design
 - This is going to an Entity Component System. What this means, is that objects within the world, are entities
 - Entities are just IDs. Nothing be beyond that
