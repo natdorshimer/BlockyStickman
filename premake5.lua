@@ -35,10 +35,10 @@ project "BlockyStickman"
     {
         "%{prj.name}/src/",
         "%{prj.name}/src/**",
+        "%{prj.name}/src/Game/**",
         "%{prj.name}/vendor/SFML/include",
         "%{prj.name}/vendor/fmt/include",
         "%{prj.name}/vendor/entt/single_include",
-
     }
 
     libdirs 
