@@ -1,3 +1,4 @@
+#include "blocky-pch.h"
 #include "VectorMath.h"
 
 std::string sf::To_String(sf::Vector2f vec)

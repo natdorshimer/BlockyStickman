@@ -1,3 +1,4 @@
+#include "blocky-pch.h"
 #include "MenuState.h"
 #include "Entity.h"
 #include "Scene.h"
@@ -6,7 +7,6 @@
 #include "Renderer.h"
 #include "GameSystems.h"
 #include "LevelLoading.h"
-#include <memory>
 #include "MenuSystems.h"
 
 namespace Blocky {

@@ -1,5 +1,6 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+
+#include "blocky-pch.h"
 namespace Blocky
 {
 	std::string To_String(sf::Event::EventType t)

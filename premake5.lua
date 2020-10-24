@@ -19,6 +19,10 @@ project "BlockyStickman"
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "blocky-pch.h"
+    pchsource "blocky-pch.cpp"
+
+
     files
     {
         "%{prj.name}/src/**.h",

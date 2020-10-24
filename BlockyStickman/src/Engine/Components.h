@@ -1,11 +1,8 @@
 #pragma once
 
+#include "blocky-pch.h"
 #include "Core.h"
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <unordered_map>
-#include <entt/entt.hpp>
-#include <cstdarg>
+
 
 namespace Blocky
 {

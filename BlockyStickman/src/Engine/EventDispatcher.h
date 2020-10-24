@@ -1,6 +1,6 @@
 #pragma once
-#include "SFML/Graphics.hpp"
-#include <functional>
+
+#include "blocky-pch.h"
 #include "Core.h"
 
 namespace Blocky

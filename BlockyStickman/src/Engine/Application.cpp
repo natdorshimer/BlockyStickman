@@ -1,6 +1,6 @@
+#include "blocky-pch.h"
+
 #include "Application.h"
-#include <iostream>
-#include <algorithm>
 #include "Core.h"
 #include "Events.h"
 #include "Renderer.h"

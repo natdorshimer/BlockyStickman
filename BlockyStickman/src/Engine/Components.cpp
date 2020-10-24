@@ -1,5 +1,6 @@
+#include "blocky-pch.h"
 #include "Components.h"
-#include <sstream>
+
 namespace Blocky
 {
 	bool Blocky::ColliderComponent::hasNormals(){ return normals.size() > 0; }

@@ -3,6 +3,7 @@
  * Lucas Campbell and Natalie Dorshimer
  */
 
+#include "blocky-pch.h"
 #include "LevelLoading.h"
 #include "Core.h"
 #include "Components.h"

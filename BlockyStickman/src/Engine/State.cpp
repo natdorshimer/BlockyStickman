@@ -1,3 +1,4 @@
+#include "blocky-pch.h"
 #include "State.h"
 #include "StateStack.h"
 
@@ -11,7 +12,7 @@ void Blocky::State::requestStackPush(States s)
 	parentRef->pushState(s);
 }
 
-/*
+
 void Blocky::State::requestStackPushFront(States s)
 {
 	parentRef->pushStateFront(s);
@@ -21,7 +22,7 @@ void Blocky::State::requestStackRemoveFront()
 {
 	parentRef->popFront();
 }
-*/
+
 void Blocky::State::requestStackPop()
 {
 	parentRef->popState();

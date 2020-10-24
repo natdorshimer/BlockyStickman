@@ -1,6 +1,6 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <string>
+
+#include "blocky-pch.h"
 
 //Since they operator on sf::Vectors this should be in the sf namespace
 namespace sf

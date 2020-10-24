@@ -1,3 +1,4 @@
+#include "blocky-pch.h"
 #include "Renderer.h"
 
 void Blocky::Renderer::Render(sf::Drawable& d)

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "fmt/format.h"
+#include "blocky-pch.h"
 
 #ifdef BLKY_DEBUG
 	#define LOG(...) fmt::print(__VA_ARGS__)

@@ -1,6 +1,7 @@
 #pragma once
+#include "blocky-pch.h"
 #include "Core.h"
-#include <memory>
+
 
 
 namespace Blocky
@@ -46,9 +47,9 @@ namespace Blocky
 		//To push a new state onto the stack to handle
 		virtual void requestStackPush(States s);
 		
-		//virtual void requestStackPushFront(States s);
+		virtual void requestStackPushFront(States s);
 
-		//virtual void requestStackRemoveFront();
+		virtual void requestStackRemoveFront();
 
 		virtual void requestStackPop();
 

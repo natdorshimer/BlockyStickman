@@ -1,5 +1,6 @@
 #pragma once
-#include "StateStack.h"
+
+#include "State.h"
 
 namespace Blocky
 {
