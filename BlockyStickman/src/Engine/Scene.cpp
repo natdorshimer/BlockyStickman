@@ -82,7 +82,7 @@ namespace Blocky
 
 		for (auto sprite_entity : entities)
 		{
-			auto&[sprite, camera] = entities.get<SpriteComponentPtr, CameraComponentPtr>(sprite_entity);
+			const auto& [sprite, camera] = entities.get<SpriteComponentPtr, CameraComponentPtr>(sprite_entity);
 
 			camera->view.setCenter(sprite->sprite.getPosition());
 

@@ -18,9 +18,9 @@ namespace Blocky
 
 		for (auto text_entity : entities)
 		{
-			auto& [text, camera] = entities.get<TextComponentPtr, CameraComponentPtr>(text_entity);
+			const auto& [text, camera] = entities.get<TextComponentPtr, CameraComponentPtr>(text_entity);
 
-			auto& [topLeftX, topLeftY] = text->text.getPosition();
+			const auto& [topLeftX, topLeftY] = text->text.getPosition();
 
 			auto h = text->text.getGlobalBounds().height;
 			auto w = text->text.getGlobalBounds().width;

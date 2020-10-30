@@ -52,9 +52,9 @@ void Blocky::MenuSystems::RenderCamera(Timestep dt, entt::registry& registry)
 
 	for (auto sprite_entity : entities)
 	{
-		auto& [sprite, camera] = entities.get<SpriteComponentPtr, CameraComponentPtr>(sprite_entity);
+		const auto& [sprite, camera] = entities.get<SpriteComponentPtr, CameraComponentPtr>(sprite_entity);
 
-		auto& [topLeftX, topLeftY] = sprite->sprite.getPosition();
+		const auto& [topLeftX, topLeftY] = sprite->sprite.getPosition();
 		auto h = sprite->sprite.getGlobalBounds().height;
 		auto w = sprite->sprite.getGlobalBounds().width;
 

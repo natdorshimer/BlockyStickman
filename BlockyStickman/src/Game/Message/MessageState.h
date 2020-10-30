@@ -17,7 +17,7 @@ namespace Blocky
 
 		virtual bool Update(Timestep dt);
 
-		void DisplayMessageState::WaitForExit(Timestep dt, entt::registry& registry);
+		void WaitForExit(Timestep dt, entt::registry& registry);
 
 	private:
 

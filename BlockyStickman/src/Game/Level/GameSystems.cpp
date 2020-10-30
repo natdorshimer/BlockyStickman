@@ -31,7 +31,7 @@ namespace Blocky
 		auto camera_view = registry.view<SpriteComponentPtr, PlayerControllerPtr, CameraComponentPtr>();
 		auto camera_entity = camera_view.front();
 
-		auto& [sprite, camera] = camera_view.get<SpriteComponentPtr, CameraComponentPtr>(camera_entity);
+		const auto& [sprite, camera] = camera_view.get<SpriteComponentPtr, CameraComponentPtr>(camera_entity);
 
 		//camera->view.setCenter(sprite->sprite.getPosition());
 		camera->view.setCenter(sf::getCenter(sprite->sprite));
@@ -68,7 +68,7 @@ namespace Blocky
 
 		for (auto ent : view)
 		{
-			auto& [sprite, velocity] = view.get<SpriteComponentPtr, VelocityComponentPtr>(ent);
+			const auto& [sprite, velocity] = view.get<SpriteComponentPtr, VelocityComponentPtr>(ent);
 
 			auto dx = velocity->velocity.x * dt; // dx/dt * dt = dx
 			auto dy = velocity->velocity.y * dt;
@@ -116,7 +116,7 @@ namespace Blocky
 
 		for (auto ent : view)
 		{
-			auto& [controller, sprite, velocity, status, states, collider] = view.get<MovementControllerGroup>(ent);
+			const auto& [controller, sprite, velocity, status, states, collider] = view.get<MovementControllerGroup>(ent);
 
 			using OState = ObjectState::ObjStates;
 
@@ -162,7 +162,7 @@ namespace Blocky
 
 		for (auto ent : view)
 		{
-			auto& [s, vel, col] = view.get<ObjectStatePtr, VelocityComponentPtr, ColliderComponentPtr>(ent);
+			const auto& [s, vel, col] = view.get<ObjectStatePtr, VelocityComponentPtr, ColliderComponentPtr>(ent);
 			if (s->HasState(ObjectState::Airborne) && hasNormalUpward(col->normals))
 			{
 				s->RemoveState(ObjectState::Airborne);
@@ -266,12 +266,12 @@ namespace Blocky
 		for (entt::entity mover : moveables)
 		{
 			//Get grouping for the moving entity
-			auto& [move_sprite, move_collider, move_velocity] = moveables.get<SpriteComponentPtr, ColliderComponentPtr, VelocityComponentPtr>(mover);
+			const auto& [move_sprite, move_collider, move_velocity] = moveables.get<SpriteComponentPtr, ColliderComponentPtr, VelocityComponentPtr>(mover);
 
 			for (entt::entity other_ent : collidables)
 			{
 				//Get grouping for the entity the mover is colliding with
-				auto& [c_sprite, c_collider] = collidables.get<SpriteComponentPtr, ColliderComponentPtr>(other_ent);
+				const auto& [c_sprite, c_collider] = collidables.get<SpriteComponentPtr, ColliderComponentPtr>(other_ent);
 
 				//If it's currently colliding with something that's not itself
 				if (!(mover != other_ent && isColliding(move_sprite, c_sprite) && move_collider->priority < c_collider->priority))
@@ -291,12 +291,12 @@ namespace Blocky
 		for (entt::entity mover : moveables)
 		{
 			//Get grouping for the moving entity
-			auto& [move_sprite, move_collider, move_velocity] = moveables.get<SpriteComponentPtr, ColliderComponentPtr, VelocityComponentPtr>(mover);
+			const auto& [move_sprite, move_collider, move_velocity] = moveables.get<SpriteComponentPtr, ColliderComponentPtr, VelocityComponentPtr>(mover);
 
 			for (entt::entity other_ent : collidables)
 			{
 				//Get grouping for the entity the mover is colliding with
-				auto& [c_sprite, c_collider] = collidables.get<SpriteComponentPtr, ColliderComponentPtr>(other_ent);
+				const auto& [c_sprite, c_collider] = collidables.get<SpriteComponentPtr, ColliderComponentPtr>(other_ent);
 
 				//If it's currently colliding with something that's not itself
 				if (mover != other_ent && isColliding(move_sprite, c_sprite) && move_collider->priority < c_collider->priority)
@@ -343,7 +343,7 @@ namespace Blocky
 		auto enemies = registry.view<AIControllerGroup>();
 		auto playerCharacter = registry.view<PlayerCharacterGroup>().front();
 
-		auto& [pcStatus, pcCollider] = registry.get<StatusComponentPtr, ColliderComponentPtr>(playerCharacter);
+		const auto& [pcStatus, pcCollider] = registry.get<StatusComponentPtr, ColliderComponentPtr>(playerCharacter);
 
 		for (auto enemy_ent : enemies)
 		{
@@ -424,7 +424,7 @@ namespace Blocky
 	{
 		auto timer_view = registry.view<TimerComponentPtr, TextComponentPtr>();
 		auto timer_entity = timer_view.front();
-		auto& [timerPtr, textPtr] = timer_view.get<TimerComponentPtr, TextComponentPtr>(timer_entity);
+		const auto& [timerPtr, textPtr] = timer_view.get<TimerComponentPtr, TextComponentPtr>(timer_entity);
 
 		timerPtr->seconds_elapsed += dt;
 		LOG("time elapsed: {}\n", timerPtr->seconds_elapsed);

@@ -25,14 +25,14 @@ namespace Blocky
 		template<typename T>
 		bool HasComponent(T& component)
 		{
-			return m_Scene->m_Registry.has<T>(component);
+			return m_Scene->m_Registry.template has<T>(component);
 		}
 
 
 		template<typename T, typename... Args>
 		void AddComponent(Args&&... args)
 		{
-			m_Scene->GetRegistry().emplace<T, Args...>(m_eID, std::forward<Args>(args)...);
+			m_Scene->GetRegistry().template emplace<T, Args...>(m_eID, std::forward<Args>(args)...);
 		}
 
 		friend class Scene;

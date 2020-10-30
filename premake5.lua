@@ -1,5 +1,5 @@
 workspace "BlockyStickman"
-    architecture "x86"
+    architecture "x64"
 
     configurations
     {
@@ -41,15 +41,6 @@ project "BlockyStickman"
         "%{prj.name}/vendor/entt/single_include",
     }
 
-    libdirs 
-    { 
-        "%{prj.name}/vendor/SFML/lib"
-    }
-
-    prebuildcommands
-    {
-        "{COPY} vendor/SFML/bin/ ../bin/" .. outputdir .. "/%{prj.name}/"
-    }
     
     defines
     {
@@ -62,21 +53,57 @@ project "BlockyStickman"
         staticruntime "On"
         systemversion "latest"
 
+        libdirs 
+        { 
+            "%{prj.name}/vendor/SFML/vs2019/lib"
+        }
+
+        prebuildcommands
+        {
+            "{COPY} vendor/SFML/vs2019/bin/ ../bin/" .. outputdir .. "/%{prj.name}/",
+            "{COPY} resources/ ../bin/" .. outputdir .. "/%{prj.name}/resources"
+        }
+
+        includedirs
+        {
+            "%{prj.name}/vendor/SFML/vs2019/include"
+        }
+
     filter "system:linux"
+   	staticruntime "On"
+        systemversion "latest"
+        
+        linkoptions { '-Wl,-rpath=\\$$ORIGIN/lib' }
+        
+        libdirs 
+        { 
+            "%{prj.name}/vendor/SFML/GCC/lib/"
+        }
+
+        includedirs
+        {
+            "%{prj.name}/vendor/SFML/GCC/include",
+        }
+
+        prebuildcommands
+        {
+        	"mkdir -p ../bin/" .. outputdir .. "/%{prj.name}/",
+            "{COPY} vendor/SFML/GCC/lib/ ../bin/" .. outputdir .. "/%{prj.name}/",
+            "{COPY} resources/ ../bin/" .. outputdir .. "/%{prj.name}/"
+        }
+        
 
 
-    filter "system:Mac"
-    
     filter "configurations:Debug"
         defines "BLKY_DEBUG"
         symbols "On"
 
         links
         {
-            "sfml-graphics-d",
-            "sfml-window-d",
-            "sfml-system-d",
-            "sfml-audio-d"
+            "sfml-graphics",
+            "sfml-window",
+            "sfml-system",
+            "sfml-audio"
         }
 
     filter "configurations:Release"
